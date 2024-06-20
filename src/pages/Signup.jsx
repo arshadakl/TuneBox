@@ -28,7 +28,7 @@ function Signup() {
     } catch (error) {
       const errorMessage = handleError(error);
       toast.error(errorMessage)
-      setError(errorMessage);
+      // setError(errorMessage);
     }
   };
 

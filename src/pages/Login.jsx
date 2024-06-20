@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { _login } from '../utils/API';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+import { handleError } from '../utils/errorHandler';
 
 function Login() {
     const navigate = useNavigate()
@@ -18,10 +19,16 @@ function Login() {
     });
 
     const handleSubmit = async (values, { setSubmitting }) => {
-        const response = await _login(values)
-        if (response.success) {
-            toast.success(response.message)
-            navigate('/')
+        try {
+            const response = await _login(values)
+            if (response.success) {
+                toast.success(response.message)
+                navigate('/')
+            }
+        } catch (error) {
+            const errorMessage = handleError(error);
+            toast.error(errorMessage)
+            // setError(errorMessage);
         }
     };
 
