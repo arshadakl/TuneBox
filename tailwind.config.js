@@ -3,6 +3,7 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
   theme: {
     extend: {
@@ -12,8 +13,15 @@ export default {
         "B3":"#1F1F22",
         "TW1":"#FCFCFC",
         
-      }
+      },
+      fontFamily: {
+        F1: ['Plus Jakarta Sans', 'sans-serif'],
+        F2: ['DM Sans', 'sans-serif'],
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
+  darkMode: 'media'
 }

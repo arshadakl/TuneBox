@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import ReactPlayer from "react-player";
+import { ShortString } from '../utils/ShortString.jsx';
 
 function MusicPlayer({
   selectedTrack,
@@ -18,7 +19,7 @@ function MusicPlayer({
   useEffect(() => {
     if (selectedTrack) {
       const trackIndex = tracks.findIndex(
-        (track) => track.id === selectedTrack.id
+        (track) => track._id === selectedTrack._id
       );
       setCurrentTrack(trackIndex);
       setIsPlaying(true);
@@ -63,14 +64,14 @@ function MusicPlayer({
     return null;
   }
 
-
+  // ShortString
   return (
-    <div className="sticky bottom-0 bg-B3 text-white p-4 flex justify-between items-center">
+    <div className="sticky bottom-0 bg-B3 text-white p-4 flex justify-evenly gap-14 items-center">
       {/* Left side: Cover image and music title */}
       <div className="flex items-center">
-        <img src="https://cdns-images.dzcdn.net/images/cover/92637a06861f5720825d788ab39c5485/1900x1900-000000-80-0-0.jpg" alt="Cover" className="w-12 h-12 mr-4" />
+        <img src={tracks[currentTrack].thumbnailUrl}  className=" h-8 mr-4" />
         <div>
-          <div className="text-lg">{tracks[currentTrack].title}</div>
+          <div className="text-md">{ ShortString(tracks[currentTrack].title,20)}</div>
           <div className="text-sm">{tracks[currentTrack].singers}</div>
         </div>
       </div>
@@ -96,13 +97,13 @@ function MusicPlayer({
             step="any"
             value={played}
             onChange={(e) => playerRef.current.seekTo(parseFloat(e.target.value))}
-            className="w-32 mx-4"
+            className="w-32 mx-4 h-1 accent-white appearance-white bg-gray-200 rounded-full"
           />
           <span>{tracks[currentTrack].duration}</span>
         </div>
       </div>
       {/* Right side: Volume control */}
-      <div className="flex items-center">
+      <div className="flex items-center ">
         <span className="mr-2">Volume</span>
         <input
           type="range"
@@ -111,7 +112,7 @@ function MusicPlayer({
           step="any"
           value={volume}
           onChange={(e) => setVolume(parseFloat(e.target.value))}
-          className="w-32"
+          className="w-32 mt-1 h-1 accent-white appearance-white bg-gray-200"
         />
       </div>
       <ReactPlayer
