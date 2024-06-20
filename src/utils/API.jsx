@@ -8,7 +8,15 @@ export const USER_API = axios.create({
 export const _signup = async (data) => {
     try {
         const response = await USER_API.post('/signup', data)
-        const cookie = document.cookie.split('; ').find(row => row.startsWith('token='));
+        return response.data
+    } catch (error) {
+        throw error;
+    }
+}
+
+export const _login = async (data) => {
+    try {
+        const response = await USER_API.post('/login', data)
         return response.data
     } catch (error) {
         throw error;

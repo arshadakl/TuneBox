@@ -5,7 +5,6 @@ import { _signup } from '../utils/API';
 import { handleError } from '../utils/errorHandler';
 import { toast } from 'sonner';
 import { useNavigate } from 'react-router-dom';
-import { getToken } from '../utils/tokenService';
 
 function Signup() {
 
