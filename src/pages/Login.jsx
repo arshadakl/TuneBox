@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { _login } from '../utils/API';
@@ -8,6 +9,8 @@ import { handleError } from '../utils/errorHandler';
 
 function Login() {
     const navigate = useNavigate()
+
+
     const initialValues = {
         username: '',
         password: '',
@@ -72,7 +75,7 @@ function Login() {
                                         href="#"
                                         className="text-gray-200 text-sm hover:underline hover:underline-offset-4 hover:decoration-purple-300"
                                     >
-                                        Forgot Password?
+                                        {/* Forgot Password? */}
                                     </a>
                                 </div>
                             </div>
@@ -86,15 +89,32 @@ function Login() {
                         </Form>
                     )}
                 </Formik>
-                <div className="flex items-center pt-4">
+                {/* <div className="flex items-center pt-4">
                     <div className="flex-1 h-px bg-gray-700" />
                     <p className="px-3 text-sm leading-5 text-gray-400">Login with social accounts</p>
                     <div className="flex-1 h-px bg-gray-700" />
-                </div>
+                </div> */}
                 <div className="flex justify-center mt-4">
-                    <button
+
+                    {/* <div className='p-5' >
+                        <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                                if (credentialResponse.credential) {
+                                    console.log(credentialResponse.credential);
+                                    // handleGoogleAuth(credentialResponse.credential);
+                                }
+                            }}
+                            onError={() => {
+                                toast.error("Login Failed");
+                            }}
+                        />
+                    </div> */}
+
+
+                    {/* <button
                         aria-label="Log in with Google"
                         className="rounded-sm p-3 bg-transparent border-none mx-2"
+                        onClick={() => googleLogin()}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -103,9 +123,18 @@ function Login() {
                         >
                             <path d="M16.318 13.714v5.484h9.078c-0.37 2.354-2.745 6.901-9.078 6.901-5.458 0-9.917-4.521-9.917-10.099s4.458-10.099 9.917-10.099c3.109 0 5.193 1.318 6.38 2.464l4.339-4.182c-2.786-2.599-6.396-4.182-10.719-4.182-8.844 0-16 7.151-16 16s7.156 16 16 16c9.234 0 15.365-6.49 15.365-15.635 0-1.052-0.115-1.854-0.255-2.651z" />
                         </svg>
-                    </button>
+                    </button>     */}
+
+
+
+
+
+
+
+
+
                 </div>
-                <p onClick={()=>navigate('/signup')} className='text-center text-sm leading-5 text-gray-400 underline cursor-pointer'>Don't have an account</p>
+                <p onClick={() => navigate('/signup')} className='text-center text-sm leading-5 text-gray-400 underline cursor-pointer'>Don't have an account</p>
 
             </div>
         </div>
