@@ -40,6 +40,15 @@ export const _login = async (data) => {
     }
 }
 
+export const _logout = async () => {
+    try {
+        const response = await USER_API.post('/logout')
+        return response.data
+    } catch (error) {
+        throw error;
+    }
+}
+
 export const _addMusic = async (data) => {
     try {
         const response = await USER_API.post('/addmusic', data)
@@ -57,3 +66,4 @@ export const _getPlaylist = async (data) => {
         throw error;
     }
 }
+

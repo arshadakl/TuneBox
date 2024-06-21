@@ -206,7 +206,7 @@ function Home() {
   // ]
   
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-gray-950">
       <div className="flex h-full">
         <Sidebar updateData={fetchPLaylist} />
         <MainContent 

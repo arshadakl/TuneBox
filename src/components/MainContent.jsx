@@ -21,7 +21,7 @@ function MainContent({
   };
 
   return (
-    <div className="flex flex-col bg-gradient-to-b from-[#5038A0] to-[#000000] flex-grow overflow-y-auto ">
+    <div className="flex flex-col bg-gradient-to-b from-[#5038A0] to-[#000000] flex-grow overflow-y-auto rounded-md m-2 mb-0">
       <div className='flex mt-10 mx-10'>
         <div><img className='w-20' src="https://misc.scdn.co/liked-songs/liked-songs-300.png" alt="" /></div>
         <div className='h-32 '>
@@ -62,17 +62,17 @@ function MainContent({
               </tr>
             </thead>
             <tbody>
-              {tracks?.map((track) => (
+              {tracks?.map((track,index) => (
                 <tr
                   key={track._id}
-                  className={`border-b text-sm border-gray-700 hover:bg-gray-700 hover:cursor-pointer
+                  className={`border-b text-sm border-gray-700 hover:bg-gray-700  font-F1 hover:cursor-pointer
           ${selectedTrack && selectedTrack._id === track._id
                       ? "bg-gray-900"
                       : ""
                     } `}
                   onClick={() =>{ onTrackSelect(track);console.log(track);}}
                 >
-                  <td className="p-4 hidden md:table-cell">{1}</td>
+                  <td className="p-4 hidden md:table-cell">{index+1}</td>
                   <td className="p-4 hidden md:table-cell">
                     <img src={track.thumbnailUrl} alt="Cover" className="w-auto h-10 mr-4" />
                     </td>

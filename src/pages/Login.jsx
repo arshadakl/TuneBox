@@ -105,6 +105,8 @@ function Login() {
                         </svg>
                     </button>
                 </div>
+                <p onClick={()=>navigate('/signup')} className='text-center text-sm leading-5 text-gray-400 underline cursor-pointer'>Don't have an account</p>
+
             </div>
         </div>
     );

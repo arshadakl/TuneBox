@@ -120,6 +120,8 @@ function Signup() {
             </svg>
           </button>
         </div>
+        <p onClick={()=>navigate('/login')} className='text-center text-sm leading-5 text-gray-400 underline cursor-pointer'>Already have an account? login</p>
+
       </div>
     </div>
   );

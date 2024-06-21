@@ -66,75 +66,80 @@ function MusicPlayer({
 
   // ShortString
   return (
-    <div className="sticky bottom-0 bg-B3 text-white p-4 flex justify-evenly gap-14 items-center">
-      {/* Left side: Cover image and music title */}
-      <div className="flex items-center">
-        <img src={tracks[currentTrack].thumbnailUrl}  className=" h-8 mr-4" />
-        <div>
-          <div className="text-md">{ ShortString(tracks[currentTrack].title,20)}</div>
-          <div className="text-sm">{tracks[currentTrack].singers}</div>
-        </div>
+    <div className="sticky bottom-0 bg-B3 text-white p-2 sm:p-4">
+  <div className="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
+    {/* Left side: Cover image and music title */}
+    <div className="flex items-center w-full sm:w-auto">
+      <img src={tracks[currentTrack].thumbnailUrl} alt="Cover" className="h-8 w-8 mr-2 sm:mr-4" />
+      <div className="flex-grow sm:flex-grow-0">
+        <div className="text-sm sm:text-md">{ShortString(tracks[currentTrack].title, 20)}</div>
+        <div className="text-xs sm:text-sm">{tracks[currentTrack].singers}</div>
       </div>
-      {/* Center: Controllers */}
-      <div className="flex flex-col items-center space-x-4">
-        <div className='flex gap-2'>
-          <button onClick={handlePrevTrack}>
-            <FaStepBackward />
-          </button>
-          <button onClick={handlePlayPause}>
-            {isPlaying ? <FaPause /> : <FaPlay />}
-          </button>
-          <button onClick={handleNextTrack}>
-            <FaStepForward />
-          </button>
-        </div>
-        <div className="flex items-center">
-          <span>{formatTime(played * tracks[currentTrack].endTime)}</span>
-          <input
-            type="range"
-            min={0}
-            max={1}
-            step="any"
-            value={played}
-            onChange={(e) => playerRef.current.seekTo(parseFloat(e.target.value))}
-            className="w-32 mx-4 h-1 accent-white appearance-white bg-gray-200 rounded-full"
-          />
-          <span>{tracks[currentTrack].duration}</span>
-        </div>
+    </div>
+
+    {/* Center: Controllers */}
+    <div className="flex flex-col items-center w-full sm:w-auto">
+      <div className='flex gap-4 sm:gap-2 mb-2'>
+        <button onClick={handlePrevTrack}>
+          <FaStepBackward className="text-lg sm:text-xl" />
+        </button>
+        <button onClick={handlePlayPause}>
+          {isPlaying ? <FaPause className="text-lg sm:text-xl" /> : <FaPlay className="text-lg sm:text-xl" />}
+        </button>
+        <button onClick={handleNextTrack}>
+          <FaStepForward className="text-lg sm:text-xl" />
+        </button>
       </div>
-      {/* Right side: Volume control */}
-      <div className="flex items-center ">
-        <span className="mr-2">Volume</span>
+      <div className="flex items-center w-full">
+        <span className="text-xs sm:text-sm">{formatTime(played * tracks[currentTrack].endTime)}</span>
         <input
           type="range"
           min={0}
           max={1}
           step="any"
-          value={volume}
-          onChange={(e) => setVolume(parseFloat(e.target.value))}
-          className="w-32 mt-1 h-1 accent-white appearance-white bg-gray-200"
+          value={played}
+          onChange={(e) => playerRef.current.seekTo(parseFloat(e.target.value))}
+          className="w-full mx-2 sm:mx-4 h-1 accent-white appearance-gray-500 bg-gray-500 rounded-full"
         />
+        <span className="text-xs sm:text-sm">{tracks[currentTrack].duration}</span>
       </div>
-      <ReactPlayer
-        ref={playerRef}
-        url={tracks[currentTrack].url}
-        playing={isPlaying}
-        volume={volume}
-        controls={false}
-        width="0"
-        height="0"
-        onProgress={handleProgress}
-        onEnded={handleNextTrack}
-        config={{
-          youtube: {
-            playerVars: {
-              start: tracks[currentTrack].startTime,
-              end: tracks[currentTrack].endTime,
-            },
-          },
-        }}
+    </div>
+
+    {/* Right side: Volume control */}
+    <div className="flex items-center w-full sm:w-auto mt-2 sm:mt-0">
+      <span className="mr-2 text-sm">Volume</span>
+      <input
+        type="range"
+        min={0}
+        max={1}
+        step="any"
+        value={volume}
+        onChange={(e) => setVolume(parseFloat(e.target.value))}
+        className="w-full sm:w-32 h-1 accent-white appearance-gray-500 bg-gray-500 rounded-full"
       />
     </div>
+  </div>
+
+  <ReactPlayer
+    ref={playerRef}
+    url={tracks[currentTrack].url}
+    playing={isPlaying}
+    volume={volume}
+    controls={false}
+    width="0"
+    height="0"
+    onProgress={handleProgress}
+    onEnded={handleNextTrack}
+    config={{
+      youtube: {
+        playerVars: {
+          start: tracks[currentTrack].startTime,
+          end: tracks[currentTrack].endTime,
+        },
+      },
+    }}
+  />
+</div>
   );
 }
 
