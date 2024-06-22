@@ -35,6 +35,7 @@ export const _login = async (data) => {
     try {
         const response = await USER_API.post('/login', data)
         console.log('Response headers:', response.headers);
+        console.log('Login response:', response);
         console.log('Cookies:', document.cookie) 
         return response.data
     } catch (error) {
