@@ -5,7 +5,7 @@ import { toast } from 'sonner';
 import { _addMusic, _logout } from '../utils/API';
 import { handleError } from '../utils/errorHandler';
 import { useNavigate } from 'react-router-dom';
-import { getUsername } from '../utils/tokenService';
+import { getUsername, removeToken, removeUsername } from '../utils/tokenService';
 
 function Sidebar({updateData}) {
   const navigate = useNavigate()
@@ -38,6 +38,8 @@ function Sidebar({updateData}) {
       const response = await _logout()
     if(response.success){
       toast.success(response.message)
+      removeToken()
+      removeUsername()
       navigate('/login')
     }
     } catch (error) {
