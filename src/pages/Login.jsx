@@ -25,6 +25,8 @@ function Login() {
         try {
             const response = await _login(values)
             if (response.success) {
+                localStorage.setItem("token",response.user.token)
+                localStorage.setItem("user",response.user.username)
                 toast.success(response.message)
                 navigate('/')
             }

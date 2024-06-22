@@ -21,10 +21,12 @@ function Signup() {
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
-    const response = await _signup(values)
-    if(response.success){
-      navigate('/')
-    }
+      const response = await _signup(values)
+      if (response.success) {
+        localStorage.setItem("token", response.user.token)
+        localStorage.setItem("user", response.user.username)
+        navigate('/')
+      }
     } catch (error) {
       const errorMessage = handleError(error);
       toast.error(errorMessage)
@@ -120,7 +122,7 @@ function Signup() {
             </svg>
           </button>
         </div> */}
-        <p onClick={()=>navigate('/login')} className='text-center mt-3 text-sm leading-5 text-gray-400 underline cursor-pointer'>Already have an account? login</p>
+        <p onClick={() => navigate('/login')} className='text-center mt-3 text-sm leading-5 text-gray-400 underline cursor-pointer'>Already have an account? login</p>
 
       </div>
     </div>
