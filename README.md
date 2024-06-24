@@ -1,8 +1,17 @@
-# React + Vite
+# TuneBox: Ad-Free Music with User-Curated Playlists
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TuneBox is a web application designed for music lovers who crave an ad-free listening experience with personalized control.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User-Submitted Playlists:** Build custom playlist by adding songs through YouTube links.
+- **Ad-Free Playback:** Enjoy uninterrupted music without advertisements.
+- **Link Validation:** The app ensures submitted links are valid URLs.
+- **Song Verification:** TuneBox checks if provided links point to actual songs on YouTube.
+- **JWT Authentication:** Secure logins and data protection with JSON Web Tokens.
+
+![](https://raw.githubusercontent.com/arshadakl/assets/main/tunebox1.png?raw=true)
+
+![](https://raw.githubusercontent.com/arshadakl/assets/main/tunebox2.png?raw=true)
+
+**Visit my TuneBox:** [tune-box.vercel.app](https://tune-box.vercel.app/)
