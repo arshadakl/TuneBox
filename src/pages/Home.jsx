@@ -7,6 +7,7 @@ import MainContent from '../components/MainContent';
 import MobileSidebar from '../components/MobileSidebar';
 import { _getPlaylist } from '../utils/API';
 import { handleError } from '../utils/errorHandler';
+import { IoMdMenu } from 'react-icons/io';
 
 
 function Home() {
@@ -226,12 +227,12 @@ function Home() {
       />
       <button 
         id="sidebarToggle" 
-        className="md:hidden p-4 bg-gray-800 text-white fixed bottom-0 left-0"
+        className="md:hidden  rounded-md p-3  bg-gray-800/50 m-3 text-white fixed top-0 left-0"
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
-        Menu
+        <IoMdMenu size={18}/>
       </button>
-      <MobileSidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <MobileSidebar setIsSidebarOpen={setIsSidebarOpen} updateData={fetchPLaylist} isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
     </div>
   );
 }
