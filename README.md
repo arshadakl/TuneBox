@@ -1,5 +1,7 @@
 # TuneBox: Ad-Free Music with User-Curated Playlists
 
+**Visit my TuneBox:** [tune-box.vercel.app](https://tune-box.vercel.app/)
+
 TuneBox is a web application designed for music lovers who crave an ad-free listening experience with personalized control.
 
 ## Features
@@ -14,4 +16,3 @@ TuneBox is a web application designed for music lovers who crave an ad-free list
 
 ![](https://raw.githubusercontent.com/arshadakl/assets/main/tunebox2.png?raw=true)
 
-**Visit my TuneBox:** [tune-box.vercel.app](https://tune-box.vercel.app/)
